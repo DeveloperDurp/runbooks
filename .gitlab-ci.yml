@@ -2,6 +2,7 @@ variables:
   script:
     description: "Which script to run?"
     value: ""
+    options:
       - ""
       - "CreateRepos"
 
