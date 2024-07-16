@@ -1,4 +1,9 @@
-$ProjectName = Read-Host "What is the name of the project?"
+param(
+  $ProjectName,
+  $GITLAB_TOKEN,
+  $GITHUB_TOKEN,
+  $GITEA_TOKEN
+)
 
 $gitlabDefaultHeaders = @{
   "PRIVATE-TOKEN" = $GITLAB_TOKEN
@@ -7,6 +12,7 @@ $gitlabDefaultHeaders = @{
 $gitlabBaseURI = "https://gitlab.com/api/v4"
 
 #Create Gitlab Repo
+Write-Host "Creating Gitlab Repo"
 $irm = @{
   uri = "$gitlabBaseURI/projects"
   headers = $gitlabDefaultHeaders 
@@ -21,6 +27,7 @@ $irm = @{
 $gitlabProject = Invoke-RestMethod @irm 
 
 #Create repos in github/gitea and add to gitlab mirror
+Write-Host "Creating Github and Gitea Repos"
 $repos = @(
   @{
     DefaultHeaders = @{

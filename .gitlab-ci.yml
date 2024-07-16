@@ -1,0 +1,26 @@
+variables:
+  script:
+    description: "Which script to run?"
+    value: ""
+      - ""
+      - "CreateRepos"
+
+  ProjectName:
+    description: "Name of the Project (For CreateRepos)"
+
+  GITLAB_TOKEN:
+    description: "Gitlab Token"
+
+  GITHUB_TOKEN:
+    description: "Github token"
+
+  GITEA_TOKEN:
+    description: "Gitea Token"
+
+CreateRepos:
+  image: mcr.microsoft.com/powershell:latest
+  script:
+    - pwsh -f ./scripts/gitlab-mirror.ps1 -ProjectName $ProjectName -GITLAB_TOKEN $GITLAB_TOKEN -GITHUB_TOKEN $GITHUB_TOKEN -GITEA_TOKEN $GITEA_TOKEN
+  rules:
+    - if: $script == "CreateRepos"
+    - when: never
