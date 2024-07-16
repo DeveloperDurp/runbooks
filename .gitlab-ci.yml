@@ -7,6 +7,7 @@ variables:
 
   ProjectName:
     description: "Name of the Project (For CreateRepos)"
+    value: ""
 
   GITLAB_TOKEN:
     description: "Gitlab Token"
