@@ -10,12 +10,15 @@ variables:
 
   GITLAB_TOKEN:
     description: "Gitlab Token"
+    value: "$GitlabToken"
 
   GITHUB_TOKEN:
     description: "Github token"
+    value: "$GithubToken"
 
   GITEA_TOKEN:
     description: "Gitea Token"
+    value: "$GiteaToken"
 
 CreateRepos:
   image: mcr.microsoft.com/powershell:latest
